@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Clock from './clock';
+import Master from './master';
 
 export default class Beat extends Component {
 
     constructor(props) {
         super(props);
-        this.delta = "UTC";
         this.state = {
             date: moment.utc()
         };
+        this.updateDate = this.updateDate.bind(this);
     }
 
-    componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
-
-    tick() {
-        this.setState({date: moment.utc()});
+    updateDate(date) {
+        this.setState({'date': date});
     }
 
     render() {
         return (
             <div>
-                <ClockTz date={this.state.date} delta={0} deltaName="UTC"/>
+                <Master updateDate={this.updateDate}/>
                 <ClockTz date={this.state.date} delta={2} deltaName="Madrid"/>
                 <ClockTz date={this.state.date} delta={3} deltaName="Moscu"/>
             </div>
