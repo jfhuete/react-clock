@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import ClockMadrid from './madrid';
 
-export default class Clock extends Component {
+export default class ClockUTC extends Component{
 
     constructor(props) {
         super(props);
@@ -24,7 +23,10 @@ export default class Clock extends Component {
     }
 
     tick() {
-        this.setState({date: moment.utc()});
+        this.setState(
+            {
+                date: moment.utc()
+            });
     }
 
     render() {
@@ -32,9 +34,7 @@ export default class Clock extends Component {
             <div>
                 <h2>Time zone {this.delta}</h2>
                 {this.state.date.format('LTS')}
-                <ClockMadrid date={this.state.date} />
             </div>
         );
     }
-
 }
