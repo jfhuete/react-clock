@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
-import Clock from './clock/clock';
-// import Form from './form/form'
+import Beat from './clock/beat';
 
 export default class App extends Component {
 
     render() {
         return (
             <div>
-                <Clock/>
+                <Beat/>
             </div>
         );
     }
 
 }
-
-// export default class App extends Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 <Form />
-//             </div>
-//         );
-//     }
-
-// }
